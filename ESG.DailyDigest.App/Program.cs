@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Runtime.CompilerServices;
 using ESG.DailyDigest.DI;
@@ -59,7 +60,7 @@ namespace ESG.DailyDigest.App
             {
                 html = File.ReadAllText("EmailTemplate.html");
             }
-            catch
+            catch (Exception)
             {
                 
             }
