@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\WeatherService.cs" />
     <Compile Include="Implementations\EmailService.cs" />
     <Compile Include="Implementations\SportsService.cs" />
+    <Compile Include="Interfaces\IWeatherService.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
     <Compile Include="Interfaces\ISportsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
