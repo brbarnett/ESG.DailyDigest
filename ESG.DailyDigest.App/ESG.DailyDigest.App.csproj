@@ -75,7 +75,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EmailTemplate.html">
+    <Content Include="EmailTemplates\Base.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplates\ItemRow.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

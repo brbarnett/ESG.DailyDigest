@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\EmailItemRow.cs" />
     <Compile Include="Models\SportingEvent.cs" />
+    <Compile Include="Models\WeatherForecast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -5,6 +5,7 @@
         public static class AppSettingKeys
         {
             public const string CubsScheduleUrl = "CubsScheduleUrl";
+            public const string WeatherUrl = "WeatherUrl";
             public const string CubsLogoImageUrl = "CubsLogoImageUrl";
 
             public static class Email
