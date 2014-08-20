@@ -48,6 +48,7 @@ namespace ESG.DailyDigest.DI
         {
             container.RegisterType<ISportsService, SportsService>(new HierarchicalLifetimeManager());
             container.RegisterType<IEmailService, EmailService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITransportationService, TransportationService>(new HierarchicalLifetimeManager());
             container.RegisterType<IWeatherService, WeatherService>(new HierarchicalLifetimeManager());
         }
 
@@ -55,6 +56,7 @@ namespace ESG.DailyDigest.DI
         {
             container.RegisterType<ISportDataRepository, EspnRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IEmailRepository, SendGridRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITransportationRepository, CtaRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IWeatherRepository, WundergroundRepository>(new HierarchicalLifetimeManager());
         }
     }
