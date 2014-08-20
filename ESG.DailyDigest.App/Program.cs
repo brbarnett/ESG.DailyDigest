@@ -16,6 +16,7 @@ namespace ESG.DailyDigest.App
     {
         private static IEmailService _emailService;
         private static ISportsService _sportsService;
+        private static ITransportationService _transportationService;
         private static IWeatherService _weatherService;
 
         static void Main(string[] args)
@@ -26,37 +27,32 @@ namespace ESG.DailyDigest.App
             
             // create cubs row
             SportingEvent cubsGame = _sportsService.GetTodaysCubsGame();
-            EmailItemRow cubsGameRow = new EmailItemRow();
-            cubsGameRow.Icon = cubsGame.LogoImageUrl;
-            cubsGameRow.Text = cubsGame.IsValid ? string.Format("Cubs game today at {0} {1} {2}",
-                cubsGame.DateTime.ToString("hh:mm tt"),
-                cubsGame.IsHomeGame ? "vs" : "@",
-                cubsGame.Opponent) : "No data";
-            emailItems.Add(cubsGameRow);
+            emailItems.Add(Mapper.Create(cubsGame));
 
             // create weather row
             WeatherForecast weatherForecast = _weatherService.GetTodaysWeatherForecast();
-            EmailItemRow weatherForecastRow = new EmailItemRow();
-            weatherForecastRow.Icon = weatherForecast.ForecastIcon;
-            weatherForecastRow.Text = weatherForecast.IsValid ? weatherForecast.ForecastText : "No data";
-            emailItems.Add(weatherForecastRow);
+            emailItems.Add(Mapper.Create(weatherForecast));
+
+            // create train status row
+            TrainStatus trainStatus = _transportationService.GetTrainStatus();
+            emailItems.Add(Mapper.Create(trainStatus));
 
             // initialize email
-            string to = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Email.To];
-            string from = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Email.From];
-            string fromDisplayName = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Email.FromDisplayName];
+            string to = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Email.To];
+            string from = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Email.From];
+            string fromDisplayName = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Email.FromDisplayName];
             string html = GetEmailTemplate("EmailTemplates/Base.html");
 
             foreach (EmailItemRow emailItem in emailItems)
             {
                 string rowHtml = GetEmailTemplate("EmailTemplates/ItemRow.html");
-                rowHtml = rowHtml.ReplaceEmailVariable("##ICON##", emailItem.Icon);
-                rowHtml = rowHtml.ReplaceEmailVariable("##TEXT##", emailItem.Text);
+                rowHtml = rowHtml.Replace("##ICON##", emailItem.Icon);
+                rowHtml = rowHtml.Replace("##TEXT##", emailItem.Text);
 
                 emailItem.Html = rowHtml;
             }
 
-            html = html.ReplaceEmailVariable("##ITEMROWS##",
+            html = html.Replace("##ITEMROWS##",
                 String.Join(
                 string.Empty, 
                 emailItems
@@ -78,6 +74,7 @@ namespace ESG.DailyDigest.App
         {
             _emailService = UnityContainerFactory.GetContainer().Resolve<IEmailService>();
             _sportsService = UnityContainerFactory.GetContainer().Resolve<ISportsService>();
+            _transportationService = UnityContainerFactory.GetContainer().Resolve<ITransportationService>();
             _weatherService = UnityContainerFactory.GetContainer().Resolve<IWeatherService>();
         }
 
@@ -94,11 +91,6 @@ namespace ESG.DailyDigest.App
             }
             
             return html;
-        }
-
-        private static string ReplaceEmailVariable(this string html, string name, string value)
-        {
-            return html.Replace(name, value);
         }
     }
 }
