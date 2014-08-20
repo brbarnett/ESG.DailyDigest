@@ -28,8 +28,8 @@ namespace ESG.DailyDigest.Repositories.Implementations
                 // should also be overwritten for link tracking purposes. 
                 email.EnableClickTracking(false);
 
-                string username = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Email.Credentials.Username];
-                string password = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Email.Credentials.Password];
+                string username = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Email.Credentials.Username];
+                string password = ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Email.Credentials.Password];
                 var credentials = new NetworkCredential(username, password);
                 var transportWeb = new Web(credentials);
 

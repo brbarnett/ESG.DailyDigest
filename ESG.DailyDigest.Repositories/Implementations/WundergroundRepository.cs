@@ -11,7 +11,7 @@ namespace ESG.DailyDigest.Repositories.Implementations
     {
         private static string WeatherUrl
         {
-            get { return ConfigurationManager.AppSettings[Constants.AppSettingKeys.WeatherUrl]; }
+            get { return ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Weather.ServiceUrl]; }
         }
 
         public WeatherForecast GetTodaysWeatherForecast()

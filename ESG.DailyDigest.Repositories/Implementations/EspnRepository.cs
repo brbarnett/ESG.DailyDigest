@@ -12,12 +12,12 @@ namespace ESG.DailyDigest.Repositories.Implementations
 
         private static string CubsScheduleUrl
         {
-            get { return ConfigurationManager.AppSettings[Constants.AppSettingKeys.CubsScheduleUrl]; }
+            get { return ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Sports.CubsScheduleUrl]; }
         }
 
         private static string CubsLogoImageUrl
         {
-            get { return ConfigurationManager.AppSettings[Constants.AppSettingKeys.CubsLogoImageUrl]; }
+            get { return ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Sports.CubsLogoImageUrl]; }
         }
 
         public SportingEvent GetTodaysCubsGame()
