@@ -1,9 +1,7 @@
 ﻿namespace ESG.DailyDigest.Domain.Models
 {
-    public struct WeatherForecast
+    public class WeatherForecast : ServiceBase
     {
-        public bool IsValid { get; set; }
-
         public string ForecastIcon { get; set; }
 
         public string ForecastText { get; set; }

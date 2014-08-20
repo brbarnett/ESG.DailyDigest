@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\EmailItemRow.cs" />
+    <Compile Include="Models\ServiceBase.cs" />
     <Compile Include="Models\SportingEvent.cs" />
+    <Compile Include="Models\TrainStatus.cs" />
     <Compile Include="Models\WeatherForecast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

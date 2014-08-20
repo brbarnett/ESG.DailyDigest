@@ -2,7 +2,7 @@
 
 namespace ESG.DailyDigest.Domain.Models
 {
-    public struct SportingEvent
+    public class SportingEvent : ServiceBase
     {
         public DateTime DateTime { get; set; }
 
@@ -11,7 +11,5 @@ namespace ESG.DailyDigest.Domain.Models
         public string LogoImageUrl { get; set; }
 
         public bool IsHomeGame { get; set; }
-
-        public bool IsValid { get; set; }
     }
 }
