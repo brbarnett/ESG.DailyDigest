@@ -53,9 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\CtaRepository.cs" />
     <Compile Include="Implementations\WundergroundRepository.cs" />
     <Compile Include="Implementations\SendGridRepository.cs" />
     <Compile Include="Implementations\EspnRepository.cs" />
+    <Compile Include="Interfaces\ITransportationRepository.cs" />
     <Compile Include="Interfaces\IWeatherRepository.cs" />
     <Compile Include="Interfaces\IEmailRepository.cs" />
     <Compile Include="Interfaces\ISportDataRepository.cs" />
