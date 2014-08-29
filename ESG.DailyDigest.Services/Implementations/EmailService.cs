@@ -15,9 +15,9 @@ namespace ESG.DailyDigest.Services.Implementations
             this._emailRepository = emailRepository;
         }
 
-        public bool SendEmail(string to, string from, string fromDisplayName, string subject, string body)
+        public void SendEmail(string to, string from, string fromDisplayName, string subject, string body)
         {
-            return _emailRepository.SendEmail(to, from, fromDisplayName, subject, body);
+            _emailRepository.SendEmail(to, from, fromDisplayName, subject, body);
         }
     }
 }
