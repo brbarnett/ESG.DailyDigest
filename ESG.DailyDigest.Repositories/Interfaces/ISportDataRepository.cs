@@ -1,9 +1,10 @@
-﻿using ESG.DailyDigest.Domain.Models;
+﻿using System;
+using ESG.DailyDigest.Domain.Models;
 
 namespace ESG.DailyDigest.Repositories.Interfaces
 {
     public interface ISportDataRepository
     {
-        SportingEvent GetTodaysCubsGame();
+        SportingEvent GetTodaysCubsGame(DateTime now);
     }
 }

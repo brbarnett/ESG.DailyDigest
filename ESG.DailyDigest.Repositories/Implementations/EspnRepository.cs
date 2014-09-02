@@ -20,12 +20,12 @@ namespace ESG.DailyDigest.Repositories.Implementations
             get { return ConfigurationManager.AppSettings[Constants.AppSettingKeys.Services.Sports.CubsLogoImageUrl]; }
         }
 
-        public SportingEvent GetTodaysCubsGame()
+        public SportingEvent GetTodaysCubsGame(DateTime now)
         {
             SportingEvent cubsGame = new SportingEvent();
             cubsGame.LogoImageUrl = CubsLogoImageUrl;
 
-            DateTime today = DateTime.Now;
+            DateTime today = now;
 
             HtmlWeb client = new HtmlWeb();
             HtmlDocument document = client.Load(CubsScheduleUrl);
@@ -35,7 +35,7 @@ namespace ESG.DailyDigest.Repositories.Implementations
                 HtmlNode table = document.DocumentNode.SelectNode("//div[@id='my-teams-table']");
                 if (!ReferenceEquals(table, null))
                 {
-                    HtmlNode dateElement = table.SelectNode(string.Format("//td//nobr[text()='{0}']", today.ToString("ddd, MMM dd")));
+                    HtmlNode dateElement = table.SelectNode(string.Format("//td//nobr[text()='{0}']", today.ToString("ddd, MMM d")));
                     if (!ReferenceEquals(dateElement, null))
                     {
                         HtmlNode gameRowElement = dateElement.ParentNode.ParentNode;
