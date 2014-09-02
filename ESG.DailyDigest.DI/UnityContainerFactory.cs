@@ -50,6 +50,7 @@ namespace ESG.DailyDigest.DI
             container.RegisterType<IEmailService, EmailService>(new HierarchicalLifetimeManager());
             container.RegisterType<ITransportationService, TransportationService>(new HierarchicalLifetimeManager());
             container.RegisterType<IWeatherService, WeatherService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITimeService, TimeService>(new HierarchicalLifetimeManager());
         }
 
         private static void RegisterRepositories(IUnityContainer container)
@@ -58,6 +59,7 @@ namespace ESG.DailyDigest.DI
             container.RegisterType<IEmailRepository, SendGridRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITransportationRepository, CtaRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IWeatherRepository, WundergroundRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITimeRepository, TimeRepository>(new HierarchicalLifetimeManager());
         }
     }
 }
